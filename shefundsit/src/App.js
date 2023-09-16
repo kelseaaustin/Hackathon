@@ -13,14 +13,14 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
-//import SubTabs from './SubTabs.js';
+import SubTabs from './SubTabs.js';
 import FinancialQuiz from "./FinancialQuiz";
 import SignUpForm from "./SignUp";
 import SignUpPage from "./SignUpPage"; // Import your SignUpPage component
-
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 
 function App() {
+
   const titles = ["Funds", "Invests", "Finances"];
   const pages = ["She Learns It", "She Budgets It"];
   const subTabLabels = [
@@ -84,12 +84,21 @@ function App() {
     setQuizStarted(true);
   };
 
+  const showSignupForm = () => {
+    setShowSignup(true);
+  };
+
   const titleStyle = {
     fontFamily: 'Montserrat, sans-serif',
     fontSize: '10rem',
   };
 
   return (
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={
     <div
       className="App"
       style={{
@@ -99,9 +108,7 @@ function App() {
         minHeight: "100vh",
       }}
     >
-      {/* Set the background color to a pink shade */}
-      <AppBar position="static" sx={{ backgroundColor: "#000" }}>
-        {/* Set the background color to black */}
+        <AppBar position="static" sx={{ backgroundColor: "#000" }}>
         <Container maxWidth="xl" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <PregnantWomanIcon
@@ -124,7 +131,7 @@ function App() {
             >
               SHEFUNDSIT
             </Typography>
-            </div>
+            
             <Tabs value={mainTabValue} onChange={handleMainTabChange} sx={{
     '& .MuiTabs-indicator': {
       backgroundColor: 'white', // Change indicator color to white
@@ -140,6 +147,7 @@ function App() {
             <Tab label="She Learns It" sx={{ color: 'white' }}/>
             <Tab label="She Budgets It" sx={{ color: 'white' }}/>
           </Tabs>
+          </div>
           </Container>
       </AppBar>
       {mainTabValue !== -1 && (
@@ -147,6 +155,17 @@ function App() {
           value={subTabValue}
           handleChange={handleSubTabChange}
           subTabLabels={subTabLabels[mainTabValue]}
+          sx={{
+            '& .MuiTabs-indicator': {
+              backgroundColor: 'white', // Change indicator color to white
+            },
+            '& .MuiTab-textColorInherit': {
+              color: 'white', // Change tab text color to white
+            },
+            '& .Mui-selected': {
+              color: 'pink', // Change selected tab text color to pink
+            },
+          }}
         />
       )}
       <main
@@ -192,24 +211,69 @@ function App() {
   >
     Take the Quiz
   </Button>
+  <Link to="/signup">
   <Button
     variant="contained"
-    sx={{
-      backgroundColor: "#000",
-      mt: 2,
-      fontSize: '1rem', // Adjust the font size as needed
-      padding: '12px 24px', // Adjust the padding as needed
-      marginLeft: '30px'
-    }}
+    onClick={showSignupForm}
+    sx={{ backgroundColor: "#000", mt: 2, fontSize: '1rem', // Adjust the font size as needed
+    padding: '12px 24px',
+    marginLeft: '10px',
+   }}
+    className="signup-button" // Add this class
   >
     Sign Up
   </Button>
+  </Link>
 </div>
           </>
         )}
+        
       </main>
-    </div>
-  );
-}
+      <div
+        style={{
+          backgroundColor: "purple", // Change the color as needed
+          height: "150px", // Adjust the height as needed
+          display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+        }}
+      >
+        <p style={{ color: "white",
+        fontSize: "1.5rem",
+        padding: "100px" }}>
+    Want to see how financially literate you are?
+  </p>
+      </div>
+      </div>
+  }
+  />
+  <Route path="/signup" element={<SignUpForm />} />
+</Routes>
+<div
 
+        style={{
+          backgroundColor: "purple", // Change the color as needed
+          height: "100px", // Adjust the height as needed
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <p style={{ color: "white",
+        fontSize: "1.5rem" }}>
+    Find out {" "}
+    <span
+      onClick={startQuiz}
+      style={{
+        cursor: "pointer",
+        textDecoration: "underline",
+        color: "inherit",
+      }}
+    >
+      here
+    </span>
+  </p>
+      </div>
+</Router>
+);
+}
 export default App;

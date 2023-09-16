@@ -21,6 +21,15 @@ header ul li a {
   color: black; /* Color of the tab text */
 }
 
+/* Pink background */
+.pink-background {
+  background-color: #ff8b94; /* Set your desired pink background color */
+  min-height: 100vh; /* Ensure a minimum height that covers the entire viewport */
+  position: relative; /* Position relative to allow content inside */
+  overflow: auto; /* Allow content to scroll if it exceeds the viewport height */
+}
+
+
 /* Style the main content area */
 main {
   background-color: pink;
