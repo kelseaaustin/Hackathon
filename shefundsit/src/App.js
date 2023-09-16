@@ -13,13 +13,15 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
-import SubTabs from './SubTabs.js';
-import FinancialQuiz from "./FinancialQuiz"; // Import your FinancialQuiz component
+//import SubTabs from './SubTabs.js';
+import FinancialQuiz from "./FinancialQuiz";
+import SignUpForm from "./SignUp";
+import SignUpPage from "./SignUpPage"; // Import your SignUpPage component
 
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 
 function App() {
-
-  const titles = ["Funds", "Invests", "Finances"]; // Add your titles here
+  const titles = ["Funds", "Invests", "Finances"];
   const pages = ["She Learns It", "She Budgets It"];
   const subTabLabels = [
     ["My Journey", "My Status"],
@@ -76,6 +78,7 @@ function App() {
   ];
 
   const [quizStarted, setQuizStarted] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
 
   const startQuiz = () => {
     setQuizStarted(true);

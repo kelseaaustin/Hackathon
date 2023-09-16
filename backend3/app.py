@@ -1,8 +1,12 @@
 from flask import Flask, render_template, jsonify, request
+from flask_cors import CORS
 import pymongo
 from bson import json_util
 
 app = Flask(__name__)
+CORS(app)
+cors = CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
+
 
 # Replace with your MongoDB connection string
 mongo_uri = "mongodb+srv://slay123:csturdy123@cluster0.wgby6ob.mongodb.net/?retryWrites=true&w=majority"
@@ -39,9 +43,12 @@ def get_all_data():
 
 @app.route('/api/signup', methods=['POST'])
 def signup():
-    username = request.form.get('username')
-    email = request.form.get('email')
-    password = request.form.get('password')
+    data = request.get_json()
+
+    # Extract values from the data dictionary
+    username = data.get('username')
+    email = data.get('email')
+    password = data.get('password')
     name = ""
     age = ""
     credit_score = ""
@@ -69,7 +76,7 @@ def signup():
 
     # Insert the user data into the database (adjust the collection name as needed)
     result = data_collection.insert_one(user_data)
-
+    print("Received Data:", username, email, password)  # Add this line to log received data
     if result.inserted_id:
         return jsonify(message='User signed up successfully'), 201
     else:

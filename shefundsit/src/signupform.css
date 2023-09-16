@@ -1,0 +1,36 @@
+/* SignUpForm.css */
+.form-container {
+    background-color: #fff; /* Set the background color to white */
+    border-radius: 8px; /* Add some border-radius for rounded corners */
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    margin: 10%;
+  }
+  
+  .form-title {
+    font-size: 24px; /* Increase the font size */
+    margin-bottom: 20px; /* Add some margin to the bottom */
+    text-align: center;
+  }
+  
+  .input-field {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .submit-button {
+    background-color: #000; /* Set the button background color to black */
+    color: #fff; /* Set the text color to white */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  /* Add more styles as needed to match your app's design */
+  
