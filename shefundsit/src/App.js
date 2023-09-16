@@ -11,17 +11,79 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
+import SubTabs from './SubTabs.js';
 import FinancialQuiz from "./FinancialQuiz"; // Import your FinancialQuiz component
 
+
 function App() {
-  const titles = ["Funds", "Invests", "Poops"]; // Add your titles here
+
+  const titles = ["Funds", "Invests", "Finances"]; // Add your titles here
   const pages = ["She Learns It", "She Budgets It"];
+  const subTabLabels = [
+    ["My Journey", "My Status"],
+    ["My Budget", "My Savings"],
+  ];
   const duration = 3000;
+
+  const [mainTabValue, setMainTabValue] = useState(-1);
+  const [subTabValue, setSubTabValue] = useState(-1);
+
+  const handleMainTabChange = (event, newValue) => {
+    setMainTabValue(newValue);
+    setSubTabValue(0);
+  };
+
+  const handleSubTabChange = (event, newValue) => {
+    setSubTabValue(newValue);
+  };
+
+  // Define the content for each tab
+  const tabContent = [
+    "Content for She Learns It",
+    "Content for She Budgets It"
+  ];
+
+    // Define the content for each main tab
+  const mainTabContent = [
+    <div key={0}>
+      <p>Main Tab 1 Content</p>
+    </div>,
+    <div key={1}>
+      <p>Main Tab 2 Content</p>
+    </div>,
+  ];
+
+  // Define the content for each sub-tab
+  const subTabContent = [
+    [
+      <div key={0}>
+        <p>Sub-Tab 1 Content</p>
+      </div>,
+      <div key={1}>
+        <p>Sub-Tab 2 Content</p>
+      </div>,
+    ],
+    [
+      <div key={0}>
+        <p>Sub-Tab 1 Content</p>
+      </div>,
+      <div key={1}>
+        <p>Sub-Tab 2 Content</p>
+      </div>,
+    ],
+  ];
 
   const [quizStarted, setQuizStarted] = useState(false);
 
   const startQuiz = () => {
     setQuizStarted(true);
+  };
+
+  const titleStyle = {
+    fontFamily: 'Montserrat, sans-serif',
+    fontSize: '10rem',
   };
 
   return (
@@ -37,8 +99,8 @@ function App() {
       {/* Set the background color to a pink shade */}
       <AppBar position="static" sx={{ backgroundColor: "#000" }}>
         {/* Set the background color to black */}
-        <Container maxWidth="xl">
-          <Toolbar disableGutters>
+        <Container maxWidth="xl" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
             <PregnantWomanIcon
               sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
             />
@@ -59,30 +121,31 @@ function App() {
             >
               SHEFUNDSIT
             </Typography>
-            <Menu
-              id="menu-appbar"
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Toolbar>
-        </Container>
+            </div>
+            <Tabs value={mainTabValue} onChange={handleMainTabChange} sx={{
+    '& .MuiTabs-indicator': {
+      backgroundColor: 'white', // Change indicator color to white
+    },
+    '& .MuiTab-textColorInherit': {
+      color: 'white', // Change tab text color to white
+    },
+    '& .Mui-selected': {
+      color: 'pink', // Change selected tab text color to pink
+    },
+  }}>
+            {/* Define your main tabs here */}
+            <Tab label="She Learns It" sx={{ color: 'white' }}/>
+            <Tab label="She Budgets It" sx={{ color: 'white' }}/>
+          </Tabs>
+          </Container>
       </AppBar>
+      {mainTabValue !== -1 && (
+        <SubTabs
+          value={subTabValue}
+          handleChange={handleSubTabChange}
+          subTabLabels={subTabLabels[mainTabValue]}
+        />
+      )}
       <main
         style={{
           flex: 1,
@@ -92,23 +155,53 @@ function App() {
           justifyContent: "center",
         }}
       >
+        <div style={{ display: mainTabValue === 0 ? 'block' : 'none' }}>
+          <p>Main Tab 1 Content</p>
+          <div>
+            {tabContent[subTabValue]}
+          </div>
+        </div>
+        <div style={{ display: mainTabValue === 1 ? 'block' : 'none' }}>
+          <p>Main Tab 2 Content</p>
+          <div>
+            {tabContent[subTabValue]}
+          </div>
+        </div>
         {quizStarted ? (
           <FinancialQuiz />
         ) : (
           <>
+            <div style={{ display: "flex", alignItems: "center" }}>
+            <p style={titleStyle}>She</p>
             <FadingTitle titles={titles} duration={duration} />
-            <Button
-              variant="contained"
-              onClick={startQuiz}
-              sx={{ backgroundColor: "#000", mt: 2 }}
-            >
-              {/* Set the button background color to black */}
-              Take the Quiz
-            </Button>
-            <Button variant="contained" sx={{ backgroundColor: "#000", mt: 2 }}>
-              {/* Set the button background color to black */}
-              Sign Up
-            </Button>
+            <p style={titleStyle}>It</p>
+            </div>
+            <div>
+  <Button
+    variant="contained"
+    onClick={startQuiz}
+    sx={{
+      backgroundColor: "#000",
+      mt: 2,
+      fontSize: '1rem', // Adjust the font size as needed
+      padding: '12px 24px', // Adjust the padding as needed
+    }}
+  >
+    Take the Quiz
+  </Button>
+  <Button
+    variant="contained"
+    sx={{
+      backgroundColor: "#000",
+      mt: 2,
+      fontSize: '1rem', // Adjust the font size as needed
+      padding: '12px 24px', // Adjust the padding as needed
+      marginLeft: '30px'
+    }}
+  >
+    Sign Up
+  </Button>
+</div>
           </>
         )}
       </main>
