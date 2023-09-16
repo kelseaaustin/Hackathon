@@ -1,0 +1,32 @@
+/* App.css */
+
+/* Reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the navigation menu (tabs) */
+header ul {
+  list-style: none;
+}
+
+header ul li {
+  display: inline;
+  margin-right: 20px; /* Adjust the spacing between tabs */
+}
+
+header ul li a {
+  text-decoration: none;
+  color: black; /* Color of the tab text */
+}
+
+/* Style the main content area */
+main {
+  background-color: pink;
+  padding: 100px; /* Optional: Add padding to the content area */
+}
+
+body {
+  background: pink;
+}
