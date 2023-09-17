@@ -29,7 +29,7 @@ const WelcomePage = ({ username }) => {
               <button onClick={handleShowAdditionalInfoForm}>
                 Provide More Information
               </button>
-              <button>Submit</button> {/* Add this button */}
+              {/* <button>Submit</button> Add this button */}
             </div>
           )}
         </div>

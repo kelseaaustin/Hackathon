@@ -36,3 +36,19 @@
     transform: translateY(-2px); /* Slight upward lift on hover */
   }
   
+  .go-home-button {
+    margin-top: 20px; /* Add some space above the button */
+    padding: 10px 20px;
+    background-color: #333; /* Dark background color for the button */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .go-home-button:hover {
+    background-color: #555; /* Darker background color on hover */
+    transform: translateY(-2px); /* Slight upward lift on hover */
+  }
