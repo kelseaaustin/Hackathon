@@ -15,6 +15,7 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import SubTabs from './SubTabs.js';
 import FinancialQuiz from "./FinancialQuiz";
+import MyStatus from './MyStatus';
 import SignUpForm from "./SignUp";
 import SignUpPage from "./SignUpPage"; // Import your SignUpPage component
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
@@ -47,45 +48,19 @@ function App() {
     "Content for She Budgets It"
   ];
 
-    // Define the content for each main tab
-  const mainTabContent = [
-    <div key={0}>
-      <p>Main Tab 1 Content</p>
-    </div>,
-    <div key={1}>
-      <p>Main Tab 2 Content</p>
-    </div>,
-  ];
-
-  // Define the content for each sub-tab
-  const subTabContent = [
-    [
-      <div key={0}>
-        <p>Sub-Tab 1 Content</p>
-      </div>,
-      <div key={1}>
-        <p>Sub-Tab 2 Content</p>
-      </div>,
-    ],
-    [
-      <div key={0}>
-        <p>Sub-Tab 1 Content</p>
-      </div>,
-      <div key={1}>
-        <p>Sub-Tab 2 Content</p>
-      </div>,
-    ],
-  ];
-
   const [quizStarted, setQuizStarted] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
 
+  const [bar, setBar] = useState(true);
+
   const startQuiz = () => {
     setQuizStarted(true);
+    setBar(false);
   };
 
   const showSignupForm = () => {
     setShowSignup(true);
+    setBar(false);
   };
 
   const titleStyle = {
@@ -180,13 +155,15 @@ function App() {
         <div style={{ display: mainTabValue === 0 ? 'block' : 'none' }}>
           <p>Main Tab 1 Content</p>
           <div>
-            {tabContent[subTabValue]}
+          {subTabValue === 0 && <p>Content for SubTab 1</p>} {/* Example content for SubTab 1 */}
+          {subTabValue === 1 && <MyStatus />} {/* Render MyStatus component when subTabValue is 0 */}
           </div>
         </div>
         <div style={{ display: mainTabValue === 1 ? 'block' : 'none' }}>
           <p>Main Tab 2 Content</p>
           <div>
-            {tabContent[subTabValue]}
+          {subTabValue === 0 && <p>Content for SubTab 2</p>} {/* Example content for SubTab 2 */}
+          {subTabValue === 1 && <p>Content for SubTab 2</p>} {/* Example content for SubTab 2 */}
           </div>
         </div>
         {quizStarted ? (
@@ -212,7 +189,7 @@ function App() {
     Take the Quiz
   </Button>
   <Link to="/signup">
-  <Button
+    <Button
     variant="contained"
     onClick={showSignupForm}
     sx={{ backgroundColor: "#000", mt: 2, fontSize: '1rem', // Adjust the font size as needed
@@ -229,7 +206,7 @@ function App() {
         )}
         
       </main>
-      <div
+      {bar && <div
         style={{
           backgroundColor: "purple", // Change the color as needed
           height: "150px", // Adjust the height as needed
@@ -240,26 +217,28 @@ function App() {
       >
         <p style={{ color: "white",
         fontSize: "1.5rem",
-        padding: "100px" }}>
+        padding: "100px",
+        fontFamily: 'Montserrat, sans-serif' }}>
     Want to see how financially literate you are?
   </p>
-      </div>
+      </div>}
       </div>
   }
   />
   <Route path="/signup" element={<SignUpForm />} />
 </Routes>
-<div
+{bar && <div
 
         style={{
           backgroundColor: "purple", // Change the color as needed
-          height: "100px", // Adjust the height as needed
+          height: "60px", // Adjust the height as needed
           display: "flex",
           justifyContent: "center",
         }}
       >
         <p style={{ color: "white",
-        fontSize: "1.5rem" }}>
+        fontSize: "1.5rem",
+        fontFamily: 'Montserrat, sans-serif' }}>
     Find out {" "}
     <span
       onClick={startQuiz}
@@ -272,7 +251,7 @@ function App() {
       here
     </span>
   </p>
-      </div>
+      </div>}
 </Router>
 );
 }

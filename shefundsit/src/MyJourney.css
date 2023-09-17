@@ -1,0 +1,39 @@
+.my-journey-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .lesson-circles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .lesson-circle {
+    text-decoration: none;
+    color: #000;
+    text-align: center;
+  }
+  
+  .circle {
+    width: 100px;
+    height: 100px;
+    background-color: #ff8b94; /* Customize circle background color */
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .circle:hover {
+    background-color: #ff5e70; /* Customize hover background color */
+  }
+  
+  .lesson-description {
+    margin-top: 10px;
+  }
+  
