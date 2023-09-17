@@ -1,0 +1,95 @@
+/* welcomepage.module.css */
+
+/* Import the Montserrat font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+/* Pink background */
+.pinkBackground {
+  background-color: #ff8b94; /* Pink background color */
+  min-height: 100vh; /* Ensure a minimum height that covers the entire viewport */
+  display: flex; /* Use flexbox to align items */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+}
+
+/* Style for the container */
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Create a two-column grid */
+  grid-gap: 20px; /* Add gap between columns */
+  align-items: center; /* Center content vertically */
+  max-width: 1200px; /* Set a maximum width for the content */
+  padding: 20px; /* Add padding to the container */
+  background-color: #fff; /* White background */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+/* Style for the welcome container (left side) */
+.welcomeContainer {
+  font-family: 'Montserrat', sans-serif; /* Modern font */
+  color: #333; /* Dark text color */
+  padding: 20px;
+}
+
+
+/* Style for the button container */
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end; /* Align button to the right */
+  padding: 20px; /* Adjust spacing from the right edge */
+}
+
+.buttonContainer button {
+  background-color: #ff8b94; /* Pink background color */
+  color: white; /* Text color */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buttonContainer button:hover {
+  background-color: #ff5d6c; /* Darker pink on hover */
+}
+
+/* Style for the additional information container */
+.additionalInfoContainer {
+    font-family: 'Montserrat', sans-serif; /* Modern font */
+    color: #333; /* Dark text color */
+    padding: 20px;
+    background-color: #ffffff; /* White background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column; /* Stack child elements vertically */
+    align-items: center; /* Center child elements horizontally */
+  }
+  
+  /* Style for the form elements inside the container */
+  .additionalInfoContainer input[type="text"],
+  .additionalInfoContainer select,
+  .additionalInfoContainer textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Style for the Submit button inside the container */
+  .additionalInfoContainer button {
+    background-color: #ff8b94; /* Pink background color */
+    color: white; /* Text color */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .additionalInfoContainer button:hover {
+    background-color: #ff5d6c; /* Darker pink on hover */
+  }
+  

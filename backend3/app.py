@@ -40,6 +40,28 @@ def get_all_data():
     serialized_data = json_util.dumps(all_data, default=str)
 
     return serialized_data
+@app.route('/api/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    username = data.get('username')
+    password = data.get('password')
+
+    if username and password:
+        # Query the database to check if the user exists and the password is correct
+        user = data_collection.find_one({'username': username, 'password': password})
+        
+        if user:
+            # User found and password is correct
+            return jsonify(message='Login successful'), 200
+        else:
+            # User not found or password is incorrect
+            return jsonify(message='Login failed: Invalid credentials'), 401
+    else:
+        return jsonify(message='Login failed: Username and password are required'), 400
+
+
+    
+
 
 @app.route('/api/signup', methods=['POST'])
 def signup():
@@ -81,6 +103,47 @@ def signup():
         return jsonify(message='User signed up successfully'), 201
     else:
         return jsonify(message='User sign-up failed'), 400
+
+from flask import Flask, request, jsonify
+
+@app.route('/api/update-user', methods=['POST'])
+       
+def update_user():
+    data = request.get_json()
+    email = data.get('email')
+    
+    print(email)
+    print(data)
+    try:
+         # Retrieve the hidden fields from the form data
+        email = data.get('email')
+        data = request.get_json()
+        print(email)
+        print(data)
+
+        # Check if the user exists in the database
+        existing_user_data = data_collection.find_one({'email': email})
+        print(existing_user_data)
+
+        if existing_user_data:
+            # Merge the existing data with the new data from the form
+            updated_data = {**existing_user_data, **data}
+
+            # Update the user's data in the database
+            result = data_collection.replace_one({'email': email}, updated_data)
+
+            if result.modified_count > 0:
+                return jsonify(message='User data updated successfully'), 200
+            else:
+                return jsonify(message='User data update failed: User not found'), 404
+        else:
+            return jsonify(message='User data update failed: User not found'), 404
+    except Exception as e:
+        return jsonify(message='User data update failed: ' + str(e)), 500
+
+
+    
+    
 
 if __name__ == '__main__':
     app.run(debug=True)
