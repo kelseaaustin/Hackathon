@@ -139,6 +139,10 @@ class FinancialQuiz extends Component {
     };
   }
 
+  handleGoToHomePage = () => {
+    this.props.history.push("/"); // Navigate to the home route ("/")
+  };
+
   handleAnswerClick = (selectedAnswer) => {
     const { currentQuestion, questions, userAnswers } = this.state;
 
@@ -175,6 +179,14 @@ class FinancialQuiz extends Component {
           <p>
             You scored {score} out of {questions.length}.
           </p>
+          <h3>Correct Answers:</h3>
+          <ul>
+            {questions.map((question, index) => (
+              <li key={index}>
+                <strong>Question {index + 1}:</strong> {question.correctAnswer}
+              </li>
+            ))}
+          </ul>
         </div>
       );
     }
@@ -187,6 +199,12 @@ class FinancialQuiz extends Component {
           Question {currentQuestion + 1} of {questions.length}
         </p>
         <h3 className={styles.question}>{currentQ.questionText}</h3>
+        {/* <button
+          className={styles["go-home-button"]}
+          onClick={this.handleGoToHomePage}
+        >
+          Go back to home
+        </button> */}
         <div>
           {currentQ.answerOptions.map((answer, index) => (
             <button

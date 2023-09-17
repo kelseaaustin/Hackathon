@@ -12,11 +12,11 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import Tab from '@mui/material/Tab';
-import Tabs from '@mui/material/Tabs';
-import SubTabs from './SubTabs.js';
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
+import SubTabs from "./SubTabs.js";
 import FinancialQuiz from "./FinancialQuiz";
-import MyStatus from './MyStatus';
+import MyStatus from "./MyStatus";
 import SignUpForm from "./SignUp";
 import SignUpPage from "./SignUpPage"; // Import your SignUpPage component
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
@@ -27,7 +27,6 @@ import AdditionalInfoForm from "./AdditionalInfoForm";
 import Lesson from './Lesson.js';
 
 function App() {
-
   const titles = ["Funds", "Invests", "Finances"];
   const pages = ["She Learns It", "She Budgets It"];
   const subTabLabels = [
@@ -51,7 +50,7 @@ function App() {
   // Define the content for each tab
   const tabContent = [
     "Content for She Learns It",
-    "Content for She Budgets It"
+    "Content for She Budgets It",
   ];
 
   const [quizStarted, setQuizStarted] = useState(false);
@@ -80,8 +79,8 @@ function App() {
   };
 
   const titleStyle = {
-    fontFamily: 'Montserrat, sans-serif',
-    fontSize: '10rem',
+    fontFamily: "Montserrat, sans-serif",
+    fontSize: "10rem",
   };
 
   return (
@@ -226,19 +225,17 @@ function App() {
             <p style={titleStyle}>It</p>
             </div>
             <div>
-          <p style={{
-        fontSize: "1.5rem",
-        fontFamily: 'Montserrat, sans-serif' }}>
-          "Women thrive when financially alive."</p>
+          
 
 </div>
           </>
         )}
+        
       </main>
       <div
         style={{
           backgroundColor: "purple", // Change the color as needed
-          height: "100px", // Adjust the height as needed
+          height: "150px", // Adjust the height as needed
           display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -248,20 +245,9 @@ function App() {
         fontSize: "1.5rem",
         padding: "100px",
         fontFamily: 'Montserrat, sans-serif' }}>
-    Want to see how financially literate you are? Take our {" "}
-    <span
-      onClick={startQuiz}
-      style={{
-        cursor: "pointer",
-        textDecoration: "underline",
-        color: "inherit",
-      }}
-    >
-      quiz!
-    </span>
+    Want to see how financially literate you are?
   </p>
       </div>
-      
       </div>
   }
   />
@@ -278,6 +264,31 @@ function App() {
         <Route path="/my-journey/:lessonId" element={<Lesson />} /> {/* Add individual lesson routes */}
         <Route path="/my-status" element={<MyStatus />} />
 </Routes>
+<div
+
+        style={{
+          backgroundColor: "purple", // Change the color as needed
+          height: "60px", // Adjust the height as needed
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <p style={{ color: "white",
+        fontSize: "1.5rem",
+        fontFamily: 'Montserrat, sans-serif' }}>
+    Take our {" "}
+    <span
+      onClick={startQuiz}
+      style={{
+        cursor: "pointer",
+        textDecoration: "underline",
+        color: "inherit",
+      }}
+    >
+      quiz!
+    </span>
+  </p>
+      </div>
 </Router>
 );
 }
