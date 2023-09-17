@@ -21,32 +21,17 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Create an object with all fields, initialized to empty strings
-    const allFields = {
-      username,
-      email,
-      password,
-      name: "",
-      age: "",
-      credit_score: "",
-      assessment_score: "",
-      savings: "",
-      income: "",
-      education_level: "",
-      employment_status: "",
-      marital_status: "",
-    };
-
-    // Construct the request body
-    const body = JSON.stringify(allFields);
-
     try {
       const response = await fetch("http://localhost:5000/api/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body,
+        body: JSON.stringify({
+          username,
+          email,
+          password,
+        }),
       });
 
       if (response.ok) {

@@ -7,114 +7,133 @@ class FinancialQuiz extends Component {
     this.state = {
       questions: [
         {
-          questionText: 'What does "APR" stand for?',
+          questionText: 'What is the "pink tax" in personal finance?',
           answerOptions: [
-            "Annual Personal Rate",
-            "Annual Percentage Rate",
-            "Average Payment Return",
-            "All-Purpose Reserve",
-          ],
-          correctAnswer: "Annual Percentage Rate",
-        },
-        {
-          questionText: "Which of the following is considered a liquid asset?",
-          answerOptions: [
-            "Real Estate",
-            "Stocks",
-            "Savings Account",
-            "Jewelry",
-          ],
-          correctAnswer: "Savings Account",
-        },
-        {
-          questionText: "What is the primary purpose of a budget?",
-          answerOptions: [
-            "To track your income",
-            "To control your spending",
-            "To maximize debt",
-            "To invest in stocks",
-          ],
-          correctAnswer: "To control your spending",
-        },
-        {
-          questionText:
-            "Which type of investment carries the highest level of risk?",
-          answerOptions: [
-            "Savings Account",
-            "Government Bonds",
-            "Stocks",
-            "Certificates of Deposit (CDs)",
-          ],
-          correctAnswer: "Stocks",
-        },
-        {
-          questionText: 'What does "401(k)" refer to?',
-          answerOptions: [
-            "A type of credit card",
-            "A retirement savings plan offered by employers",
-            "The stock market index",
-            "A high-interest savings account",
-          ],
-          correctAnswer: "A retirement savings plan offered by employers",
-        },
-        {
-          questionText:
-            "What is the key advantage of diversifying your investment portfolio?",
-          answerOptions: [
-            "Higher taxes",
-            "Lower returns",
-            "Reduced risk",
-            "No fees",
-          ],
-          correctAnswer: "Reduced risk",
-        },
-        {
-          questionText:
-            "What is the recommended emergency fund size for most individuals?",
-          answerOptions: [
-            "1 month of expenses",
-            "3-6 months of expenses",
-            "1 year of expenses",
-            "It varies from person to person",
-          ],
-          correctAnswer: "3-6 months of expenses",
-        },
-        {
-          questionText:
-            "What is the difference between a debit card and a credit card?",
-          answerOptions: [
-            "Debit cards have a credit limit, while credit cards don't.",
-            "Debit cards withdraw money directly from your bank account, while credit cards allow you to borrow money.",
-            "Debit cards are not accepted at most stores, while credit cards are.",
-            "Debit cards have higher interest rates than credit cards.",
+            "A tax specifically levied on women's income",
+            "The extra cost women may pay for certain products and services",
+            "A tax deduction available only to women",
           ],
           correctAnswer:
-            "Debit cards withdraw money directly from your bank account, while credit cards allow you to borrow money.",
+            "The extra cost women may pay for certain products and services",
         },
         {
-          questionText: "What is the main benefit of a fixed-rate mortgage?",
+          questionText:
+            "True or False: Women tend to live longer than men on average. Does this impact their retirement savings needs?",
+          answerOptions: ["True", "False"],
+          correctAnswer: "True",
+        },
+        {
+          questionText:
+            "Why is it crucial for women to invest and build wealth over time?",
           answerOptions: [
-            "The interest rate stays the same throughout the loan term.",
-            "You can pay off the loan early without penalty.",
-            "It requires a smaller down payment.",
-            "The interest rate adjusts with market fluctuations.",
+            "Women generally earn more than men in the long run.",
+            "Women tend to have more job security than men.",
+            "Women live longer on average and may need more financial resources in retirement.",
           ],
           correctAnswer:
-            "The interest rate stays the same throughout the loan term.",
+            "Women live longer on average and may need more financial resources in retirement.",
         },
         {
-          questionText: "What is inflation?",
+          questionText:
+            "True or False: Historically, women have been less likely to invest in the stock market compared to men, which can impact their long-term wealth accumulation.",
+          answerOptions: ["True", "False"],
+          correctAnswer: "True",
+        },
+        {
+          questionText: "What is impact investing?",
           answerOptions: [
-            "A decrease in the overall level of prices",
-            "The rate at which money increases in value",
-            "An increase in the overall level of prices",
-            "The interest rate on a savings account",
+            "Investing in companies with a focus on promoting gender equality and social responsibility.",
+            "Investing in highly speculative stocks.",
+            "Investing in luxury brands and products.",
           ],
-          correctAnswer: "An increase in the overall level of prices",
+          correctAnswer:
+            "Investing in companies with a focus on promoting gender equality and social responsibility.",
+        },
+        {
+          questionText:
+            "How can student loan debt impact women differently than men?",
+          answerOptions: [
+            "Women typically receive more scholarships to cover their education costs.",
+            "Women tend to earn higher salaries, making it easier to repay student loans.",
+            "Women may carry a larger burden of student loan debt due to the gender pay gap.",
+          ],
+          correctAnswer:
+            "Women may carry a larger burden of student loan debt due to the gender pay gap.",
+        },
+        {
+          questionText:
+            "True or False: Women should avoid using credit cards altogether to maintain good financial health.",
+          answerOptions: ["True", "False"],
+          correctAnswer: "False",
+        },
+        {
+          questionText:
+            "What is the 'gender pay gap,' and how can it affect a woman's ability to manage debt and save for the future?",
+          answerOptions: [
+            "The difference in pay between men and women, which can lead to women having less income to manage debt and save.",
+            "A government program that provides financial assistance to women in debt.",
+            "A tax benefit available only to women.",
+          ],
+          correctAnswer:
+            "The difference in pay between men and women, which can lead to women having less income to manage debt and save.",
+        },
+        {
+          questionText:
+            "Why is it important for women to take an active role in retirement planning and not rely solely on a spouse or partner?",
+          answerOptions: [
+            "Women tend to outlive their spouses and may need to manage finances on their own.",
+            "Women are generally better at managing finances than men.",
+            "Women don't need to worry about retirement planning as much as men.",
+          ],
+          correctAnswer:
+            "Women tend to outlive their spouses and may need to manage finances on their own.",
+        },
+        {
+          questionText:
+            "True or False: Women are eligible for Social Security benefits based on their own work history, even if they have never been married.",
+          answerOptions: ["True", "False"],
+          correctAnswer: "True",
+        },
+        {
+          questionText:
+            "What are some strategies women can use to catch up on retirement savings if they start later in life?",
+          answerOptions: [
+            "Delay retirement age and continue working longer.",
+            "Rely solely on government pension plans.",
+            "Depend on family support during retirement.",
+          ],
+          correctAnswer: "Delay retirement age and continue working longer.",
+        },
+        {
+          questionText:
+            "Why is it important for women to set financial goals and have a clear vision of their financial future?",
+          answerOptions: [
+            "Setting financial goals can help women accumulate wealth and achieve financial independence.",
+            "Financial goals are not necessary for women.",
+          ],
+          correctAnswer:
+            "Setting financial goals can help women accumulate wealth and achieve financial independence.",
+        },
+        {
+          questionText:
+            "True or False: Financial independence means that a woman should never rely on anyone else, including a spouse or partner, for financial support.",
+          answerOptions: ["True", "False"],
+          correctAnswer: "False",
+        },
+        {
+          questionText:
+            "How can networking and mentorship opportunities benefit women in their financial and career growth?",
+          answerOptions: [
+            "Networking and mentorship are not essential for women's financial success.",
+            "They can provide valuable guidance, support, and access to career opportunities.",
+            "Networking and mentorship are only relevant for men.",
+          ],
+          correctAnswer:
+            "They can provide valuable guidance, support, and access to career opportunities.",
         },
       ],
       currentQuestion: 0,
-      userAnswers: Array(10).fill(null),
+      userAnswers: Array(15).fill(null),
       score: 0,
       showResults: false,
     };
@@ -161,26 +180,24 @@ class FinancialQuiz extends Component {
     }
 
     const currentQ = questions[currentQuestion];
-
     return (
       <div className={styles["quiz-container"]}>
-        <h2 className={styles.question}>Financial Literacy Quiz</h2>
+        <h2 className={styles.question}>Financial Literacy Quiz for Women</h2>
         <p>
           Question {currentQuestion + 1} of {questions.length}
         </p>
         <h3 className={styles.question}>{currentQ.questionText}</h3>
-        <ul>
+        <div>
           {currentQ.answerOptions.map((answer, index) => (
-            <li key={index}>
-              <button
-                className={styles["answer-option"]}
-                onClick={() => this.handleAnswerClick(answer)}
-              >
-                {answer}
-              </button>
-            </li>
+            <button
+              key={index}
+              className={styles["answer-option"]}
+              onClick={() => this.handleAnswerClick(answer)}
+            >
+              {answer}
+            </button>
           ))}
-        </ul>
+        </div>
       </div>
     );
   }
