@@ -6,6 +6,7 @@ import Grid from "@mui/material/Grid";
 import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
 import PregnantWomanIcon from "@mui/icons-material/PregnantWoman";
+import FemaleIcon from '@mui/icons-material/Female';
 import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -21,7 +22,9 @@ import SignUpPage from "./SignUpPage"; // Import your SignUpPage component
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import LoginForm from "./LoginForm";
 import WelcomePage from "./WelcomePage";
+import MyJourney from './MyJourney';
 import AdditionalInfoForm from "./AdditionalInfoForm";
+import Lesson from './Lesson.js';
 
 function App() {
 
@@ -57,16 +60,12 @@ function App() {
   const [loginResult, setLoginResult] = useState("");
   const [username, setUsername] = useState(""); // Initialize username state
 
-  const [bar, setBar] = useState(true);
-
   const startQuiz = () => {
     setQuizStarted(true);
-    setBar(false);
   };
 
   const showSignupForm = () => {
     setShowSignup(true);
-    setBar(false);
   };
 
   const handleLogin = () => {
@@ -103,7 +102,7 @@ function App() {
         <AppBar position="static" sx={{ backgroundColor: "#000" }}>
         <Container maxWidth="xl" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            <PregnantWomanIcon
+            <FemaleIcon
               sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
             />
             <Typography
@@ -119,6 +118,7 @@ function App() {
                 letterSpacing: ".3rem",
                 color: "#fff", // Set the text color to white
                 textDecoration: "none",
+                fontFamily: "Montserrat"
               }}
             >
               SHEFUNDSIT
@@ -136,7 +136,9 @@ function App() {
     },
   }}>
             {/* Define your main tabs here */}
+            <Link to="/my-status" style={{ textDecoration: 'none', color: 'inherit' }}>
             <Tab label="She Learns It" sx={{ color: 'white' }}/>
+            </Link>
           </Tabs>
           </div>
           <div style={{ display: "flex", alignItems: "center" }}>
@@ -224,17 +226,19 @@ function App() {
             <p style={titleStyle}>It</p>
             </div>
             <div>
-          
+          <p style={{
+        fontSize: "1.5rem",
+        fontFamily: 'Montserrat, sans-serif' }}>
+          "Women thrive when financially alive."</p>
 
 </div>
           </>
         )}
-        
       </main>
-      {bar && <div
+      <div
         style={{
           backgroundColor: "purple", // Change the color as needed
-          height: "150px", // Adjust the height as needed
+          height: "100px", // Adjust the height as needed
           display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -244,9 +248,20 @@ function App() {
         fontSize: "1.5rem",
         padding: "100px",
         fontFamily: 'Montserrat, sans-serif' }}>
-    Want to see how financially literate you are?
+    Want to see how financially literate you are? Take our {" "}
+    <span
+      onClick={startQuiz}
+      style={{
+        cursor: "pointer",
+        textDecoration: "underline",
+        color: "inherit",
+      }}
+    >
+      quiz!
+    </span>
   </p>
-      </div>}
+      </div>
+      
       </div>
   }
   />
@@ -259,32 +274,10 @@ function App() {
         />
         <Route path="/welcome" element={<WelcomePage username={username} />} />
         <Route path="/additional-info" element={<AdditionalInfoForm />} />
+        <Route path="/my-journey" element={<MyJourney />} /> {/* Add this route */}
+        <Route path="/my-journey/:lessonId" element={<Lesson />} /> {/* Add individual lesson routes */}
+        <Route path="/my-status" element={<MyStatus />} />
 </Routes>
-{bar && <div
-
-        style={{
-          backgroundColor: "purple", // Change the color as needed
-          height: "60px", // Adjust the height as needed
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <p style={{ color: "white",
-        fontSize: "1.5rem",
-        fontFamily: 'Montserrat, sans-serif' }}>
-    Take our {" "}
-    <span
-      onClick={startQuiz}
-      style={{
-        cursor: "pointer",
-        textDecoration: "underline",
-        color: "inherit",
-      }}
-    >
-      quiz!
-    </span>
-  </p>
-      </div>}
 </Router>
 );
 }

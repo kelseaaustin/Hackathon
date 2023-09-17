@@ -4,37 +4,38 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button'
 import { useNavigate } from 'react-router-dom';
 
+const containerStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center', // Center items horizontally
+  justifyContent: 'center', // Center items vertically
+  minHeight: '100vh', // Adjust the minHeight as needed
+};
+
+const buttonStyle = {
+  marginTop: '16px', // Adjust the margin as needed
+};
+
 function MyStatus() {
   const [sliderValue, setSliderValue] = useState(0); // State to hold the slider value
   const [isLoading, setIsLoading] = useState(true); // State to manage loading state
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Define your API endpoint URL
-    const apiUrl = '/api/status'; // Replace with your actual API endpoint
+    // Fetch the assessment score from your Flask API
+    async function fetchAssessmentScore(username) {
+      try {
+        const response = await fetch(`/api/assessment-score?username=${username}`);
+        const data = await response.json();
+        setSliderValue(data.assessment_score);
+      } catch (error) {
+        console.error('Error fetching assessment score:', error);
+        // Handle the error appropriately
+      }
+    }
 
-    // Use fetch to make a GET request
-    fetch(apiUrl)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Request failed with status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        // Check if the data contains the expected field (e.g., 'value')
-        if (data && data.value !== undefined) {
-          setSliderValue(data.value);
-        } else {
-          // Handle the case where data is missing or incomplete
-          setSliderValue(0); // Set a default value (or any other desired behavior)
-        }
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-        setIsLoading(false);
-      });
+    // Replace 'JohnDoe' with the actual username you want to retrieve
+    fetchAssessmentScore('JohnDoe');
   }, []);
 
   const handleSliderChange = (event, newValue) => {
@@ -48,13 +49,10 @@ function MyStatus() {
   };
 
   return (
-    <div>
+    <div style={containerStyle}>
       <Typography variant="h5" gutterBottom>
         My Status
       </Typography>
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
         <div>
           <p>How Financially Literate Am I?: {sliderValue}</p>
           <Slider
@@ -63,6 +61,7 @@ function MyStatus() {
             min={0}
             max={100}
             step={1}
+            style={{ color: 'black' }}
             valueLabelDisplay="auto"
             valueLabelFormat={(value) => `${value}%`}
             marks={[
@@ -84,11 +83,11 @@ function MyStatus() {
             variant="contained"
             onClick={handleIncreaseLiteracyClick}
             sx={{ mt: 2 }}
+            style={{ backgroundColor: 'black', color: 'white' }}
           >
             Increase Your Literacy
           </Button>
         </div>
-      )}
     </div>
   );
 }
