@@ -62,7 +62,6 @@ def login():
 
     
 
-
 @app.route('/api/signup', methods=['POST'])
 def signup():
     data = request.get_json()
