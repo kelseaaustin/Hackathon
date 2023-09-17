@@ -24,6 +24,7 @@ import LoginForm from "./LoginForm";
 import WelcomePage from "./WelcomePage";
 import MyJourney from './MyJourney';
 import AdditionalInfoForm from "./AdditionalInfoForm";
+import Layout from './Layout';
 import Lesson from './Lesson.js';
 
 function App() {
@@ -73,9 +74,9 @@ function App() {
     if (loginData.username && loginData.password) {
       // Assuming a successful login for demonstration
       setLoginResult("Login successful");
-    } else {
-      setLoginResult("Login failed: Username and password are required");
-    }
+    } //else {
+      //setLoginResult("Login failed: Username and password are required");
+    //}
   };
 
   const titleStyle = {
@@ -150,6 +151,9 @@ function App() {
                           ml: 2,
                           fontSize: "1rem",
                           padding: "12px 24px",
+                          "&:hover": {
+                            backgroundColor: "#333", // Change this to the color you want on hover
+                          },
                         }}
                         className="signup-button"
                       >
@@ -165,6 +169,9 @@ function App() {
                           ml: 2,
                           fontSize: "1rem",
                           padding: "12px 24px",
+                          "&:hover": {
+                            backgroundColor: "#333", // Change this to the color you want on hover
+                          },
                         }}
                       >
                         Login
@@ -225,7 +232,10 @@ function App() {
             <p style={titleStyle}>It</p>
             </div>
             <div>
-          
+          <p style={{ color: "gray",
+        fontSize: "1.5rem",
+        fontFamily: 'Montserrat, sans-serif' }}>
+          "Women thrive when financially alive."</p>
 
 </div>
           </>
@@ -234,49 +244,18 @@ function App() {
       </main>
       <div
         style={{
-          backgroundColor: "purple", // Change the color as needed
+          backgroundColor: "#ff8b94", // Change the color as needed
           height: "150px", // Adjust the height as needed
           display: "flex",
     alignItems: "center",
     justifyContent: "center",
         }}
       >
-        <p style={{ color: "white",
+        <p style={{ color: "black",
         fontSize: "1.5rem",
         padding: "100px",
         fontFamily: 'Montserrat, sans-serif' }}>
-    Want to see how financially literate you are?
-  </p>
-      </div>
-      </div>
-  }
-  />
-  <Route path="/signup" element={<SignUpForm />} />
-  <Route
-          path="/login"
-          element={
-            <LoginForm onLogin={handleLogin} setUsername={setUsername} />
-          }
-        />
-        <Route path="/welcome" element={<WelcomePage username={username} />} />
-        <Route path="/additional-info" element={<AdditionalInfoForm />} />
-        <Route path="/my-journey" element={<MyJourney />} /> {/* Add this route */}
-        <Route path="/my-journey/:lessonId" element={<Lesson />} /> {/* Add individual lesson routes */}
-        <Route path="/my-status" element={<MyStatus />} />
-</Routes>
-<div
-
-        style={{
-          backgroundColor: "purple", // Change the color as needed
-          height: "60px", // Adjust the height as needed
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <p style={{ color: "white",
-        fontSize: "1.5rem",
-        fontFamily: 'Montserrat, sans-serif' }}>
-    Take our {" "}
+    Want to see how financially literate you are? Take our {" "}
     <span
       onClick={startQuiz}
       style={{
@@ -289,6 +268,23 @@ function App() {
     </span>
   </p>
       </div>
+      </div>
+  }
+  />
+  <Route path="/signup" element={<Layout><SignUpForm /></Layout>} />
+  <Route
+          path="/login"
+          element={
+            <LoginForm onLogin={handleLogin} setUsername={setUsername} />
+          }
+        />
+        <Route path="/welcome" element={<Layout><WelcomePage username={username} /></Layout>} />
+        <Route path="/additional-info" element={<Layout><AdditionalInfoForm /></Layout>} />
+        <Route path="/my-journey" element={<Layout><MyJourney /></Layout>} /> {/* Add this route */}
+        <Route path="/my-journey/:lessonId" element={<Lesson />} /> {/* Add individual lesson routes */}
+        <Route path="/my-status" element={<Layout><MyStatus /></Layout>} />
+        <Route path="/quiz" component={Lesson} />
+</Routes>
 </Router>
 );
 }

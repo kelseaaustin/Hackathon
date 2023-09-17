@@ -10,6 +10,7 @@ const containerStyle = {
   alignItems: 'center', // Center items horizontally
   justifyContent: 'center', // Center items vertically
   minHeight: '100vh', // Adjust the minHeight as needed
+  fontFamily: "Montserrat"
 };
 
 const buttonStyle = {
@@ -18,6 +19,7 @@ const buttonStyle = {
 
 function MyStatus() {
   const [sliderValue, setSliderValue] = useState(0); // State to hold the slider value
+  const [isSliderDisabled, setSliderDisabled] = useState(true);
   const [isLoading, setIsLoading] = useState(true); // State to manage loading state
   const navigate = useNavigate();
 
@@ -28,6 +30,7 @@ function MyStatus() {
         const response = await fetch(`/api/assessment-score?username=${username}`);
         const data = await response.json();
         setSliderValue(data.assessment_score);
+        setSliderDisabled(true);
       } catch (error) {
         console.error('Error fetching assessment score:', error);
         // Handle the error appropriately
@@ -35,7 +38,7 @@ function MyStatus() {
     }
 
     // Replace 'JohnDoe' with the actual username you want to retrieve
-    fetchAssessmentScore('JohnDoe');
+    fetchAssessmentScore('kelsea');
   }, []);
 
   const handleSliderChange = (event, newValue) => {
@@ -54,10 +57,11 @@ function MyStatus() {
         My Status
       </Typography>
         <div>
-          <p>How Financially Literate Am I?: {sliderValue}</p>
+          <p>How Financially Literate Am I?</p>
           <Slider
             value={sliderValue}
             onChange={handleSliderChange}
+            disabled={isSliderDisabled}
             min={0}
             max={100}
             step={1}
